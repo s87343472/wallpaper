@@ -1,0 +1,6 @@
+{
+  "/wallpaper/[id]/page": "app/wallpaper/[id]/page.js",
+  "/page": "app/page.js",
+  "/api/wallpapers/route": "app/api/wallpapers/route.js",
+  "/api/wallpapers/[id]/route": "app/api/wallpapers/[id]/route.js"
+}
