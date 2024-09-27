@@ -29,6 +29,7 @@ const deviceDimensions = {
 export default function MobileWallpaperDetails({ wallpaper, onPremiumClick }: MobileWallpaperDetailsProps) {
   const [selectedDevice, setSelectedDevice] = useState('iPhone 14 Pro')
   const [isEnlarged, setIsEnlarged] = useState(false)
+  const [downloadError, setDownloadError] = useState('')
 
   if (!wallpaper) {
     return <div>Loading...</div>
@@ -39,6 +40,19 @@ export default function MobileWallpaperDetails({ wallpaper, onPremiumClick }: Mo
   const toggleEnlarged = () => {
     setIsEnlarged(!isEnlarged)
   }
+
+  const handleDownload = (e) => {
+    e.preventDefault();
+    if (!wallpaper.src) {
+      setDownloadError('No file available for download');
+      return;
+    }
+
+    const filename = wallpaper.src.split('/').pop();
+    window.location.href = `/api/download?file=${encodeURIComponent(filename)}`;
+  };
+
+  console.log('Wallpaper object:', wallpaper); // 添加这行来调试
 
   return (
     <div className="flex flex-col">
@@ -110,11 +124,14 @@ export default function MobileWallpaperDetails({ wallpaper, onPremiumClick }: Mo
         </div>
       )}
 
-      <DownloadButton
-        wallpaperId={wallpaper.id}
-        isPremium={wallpaper.isPremium}
-        onPremiumClick={onPremiumClick}
-      />
+      <button 
+        onClick={handleDownload}
+        className="download-button"
+      >
+        Download
+      </button>
+      {downloadError && <p className="text-red-500">{downloadError}</p>}
+
     </div>
   )
 }

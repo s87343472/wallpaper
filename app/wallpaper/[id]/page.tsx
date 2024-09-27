@@ -37,7 +37,7 @@ export default function WallpaperPage() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Header onLoginClick={() => {}} />
+      <Header />
       <main className="flex-grow container mx-auto px-4 py-8">
         <WallpaperDetails 
           wallpaper={wallpaper} 

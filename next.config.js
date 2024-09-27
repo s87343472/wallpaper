@@ -1,9 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  images: {
-    domains: ['images.unsplash.com'],
-  },
+  // 如果有其他配置，保留它们
+  // 例如：
+  // reactStrictMode: true,
 }
 
 module.exports = nextConfig

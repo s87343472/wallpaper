@@ -47,7 +47,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Header onLoginClick={() => setIsLoginModalOpen(true)} />
+      <Header />
       <main className="flex-grow">
         {isHeroVisible && <Hero />}
         <div className={`container mx-auto px-4 ${isHeroVisible ? 'py-8' : 'pt-4 pb-8'}`}>

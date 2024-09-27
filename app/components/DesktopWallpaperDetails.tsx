@@ -122,11 +122,18 @@ export default function DesktopWallpaperDetails({ wallpaper, onPremiumClick }: D
           </div>
         )}
         
-        <DownloadButton
-          wallpaperId={wallpaper.id}
-          isPremium={wallpaper.isPremium}
-          onPremiumClick={onPremiumClick}
-        />
+        <a 
+          href={`/api/download?file=${encodeURIComponent(wallpaper.filename || '')}`}
+          className="download-button"
+          onClick={(e) => {
+            if (!wallpaper.filename) {
+              e.preventDefault();
+              alert('No filename available for download');
+            }
+          }}
+        >
+          Download
+        </a>
       </div>
     </div>
   )
